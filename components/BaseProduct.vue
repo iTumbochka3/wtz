@@ -1,7 +1,9 @@
 <template>
     <v-card class="product-card">
         <v-card-text>
-            <v-avatar color="primary" size="48" :src="product.user?.profile_image ? product.user?.profile_image.small : null"></v-avatar>
+            <v-avatar color="primary" size="48">
+                <img :src="product.user.profile_image.medium" />
+            </v-avatar>
             <div class="user-info">
                 <div class="user-info__name">{{ product.user.name }}</div>
                 <div class="user-info__tag">{{ product.user.instagram_username }}</div>
