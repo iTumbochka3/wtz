@@ -44,6 +44,10 @@ export const useProductStore = defineStore({
         .catch((error) => { console.log('error', error); });
     },
 
+    async getUser(username: string) {
+      return await unsplash.users.get({ username: username});
+    },
+
     generatePrice(): number {
       return Math.floor(Math.random() * (this.maxPrice - this.minPrice + 1)) + this.minPrice;
     },

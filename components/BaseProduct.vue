@@ -1,10 +1,10 @@
 <template>
     <v-card class="product-card">
-        <v-card-text @click="showProfile">
+        <v-card-text>
             <v-avatar size="48">
                 <img :src="photoObject.user.profile_image.medium" />
             </v-avatar>
-            <div class="user-info">
+            <div class="user-info" @click="showProfile(photoObject.user.username)">
                 <div class="user-info__name">{{ photoObject.user.name }}</div>
                 <div class="user-info__tag">{{ photoObject.user.instagram_username }}</div>
             </div>
@@ -50,8 +50,8 @@ function removeProduct(): void {
     }
 };
 
-function showProfile() {
-    let routeData = router.resolve({path: '/profile', query: {data: "someData"}});
+function showProfile(username: string) {
+    let routeData = router.resolve({path: '/profile', query: { username: username }});
     window.open(routeData.href, '_blank');
 }
 

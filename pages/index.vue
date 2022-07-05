@@ -9,10 +9,6 @@ import { useProductStore } from '~~/stores/product';
 
 const store = useProductStore();
 
-const state = reactive({
-    productList: reactive(store.productList),
-});
-
 watchEffect(() => {
     store.getProducts();
 });
