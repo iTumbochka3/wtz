@@ -2,7 +2,7 @@
     flex: 0 1 330px;
     margin: 1ex;
 
-    .v-card-title {
+    .v-card-text {
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -20,11 +20,23 @@
 }
 
 .user-info__name {
+    font-size: 16px;
     font-weight: 600;
 }
 
 .user-info__tag {
     color: gray;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.product__counter {
+    margin-left: 1ex;
     font-size: 16px;
     font-weight: 400;
+}
+
+.product__price {
+    font-size: 16px;
+    font-weight: 600;
 }

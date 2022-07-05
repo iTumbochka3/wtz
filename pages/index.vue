@@ -7,16 +7,23 @@
 <script setup lang="ts">
 import { Product } from '@/constants';
 
-// async function send() {
-// await useFetch('https://api.unsplash.com/photos')
-// .then((result) => { console.log('success', result); })
-// .catch((error) => { console.log('error', error); });
-// }
+let productList: Product[] = reactive([]);
 
-let productList: Product[] = [];
-for (let i = 1; i < 9; i++) {
-    productList.push(new Product(`${i}`, 'https://cdn.vuetifyjs.com/images/cards/cooking.png'));
-}
+onMounted(() => {
+    for (let i = 1; i < 9; i++) {
+        productList.push(new Product(`${i}`, 'https://cdn.vuetifyjs.com/images/cards/cooking.png'));
+    }
+    send();
+});
+
+async function send() {
+    await useFetch('https://api.unsplash.com/photos/?client_id=1kwxDz0xnLSCT3Chy0DMNIX__ucKl7BlVFiWDgEULZ0',
+        // { headers: {'Authorization': 'Client-ID 1kwxDz0xnLSCT3Chy0DMNIX__ucKl7BlVFiWDgEULZ0'} }
+    )
+        .then((result) => { console.log('success', result); })
+        .catch((error) => { console.log('error', error); });
+};
+
 </script>
 
 <style scoped lang="scss">
