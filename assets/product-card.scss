@@ -1,0 +1,30 @@
+.product-card {
+    flex: 0 1 330px;
+    margin: 1ex;
+
+    .v-card-title {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .v-card-actions {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.user-info {
+    margin-left: 1ex;
+}
+
+.user-info__name {
+    font-weight: 600;
+}
+
+.user-info__tag {
+    color: gray;
+    font-size: 16px;
+    font-weight: 400;
+}

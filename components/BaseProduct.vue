@@ -1,34 +1,48 @@
 <template>
-    <v-card class="mx-auto my-12" max-width="380">
+    <v-card class="product-card">
         <v-card-title>
-            <v-avatar color="primary" size="48"></v-avatar>
+            <v-avatar color="primary" size="48">JM</v-avatar>
+            <div class="user-info">
+                <div class="user-info__name">Jason Mowry</div>
+                <div class="user-info__tag">@jason_mowry_photo</div>
+            </div>
         </v-card-title>
-        <v-img height="312" :src="image"></v-img>
+        <v-img :src="product.imageUrl"></v-img>
         <v-card-actions>
-            <v-btn text @click="plus">
-                -
-            </v-btn>
-            <v-btn text @click="remove">
-                +
-            </v-btn>
-            {{ counter }}
+            <div>
+                <v-icon small @click="plus">
+                    mdi-plus
+                </v-icon>
+                <v-icon small @click="minus">
+                    mdi-minus
+                </v-icon>
+                {{ counter }}
+            </div>
+            <div>
+                {{ product.price }} руб.
+            </div>
         </v-card-actions>
     </v-card>
 </template>
 
 <script setup lang="ts">
+
 const props = defineProps({
-    id: Number,
-    image: String,
+    product: { type: Object },
 });
 
-let counter = 0;
+let counter = ref(0);
 
 function plus(): void {
-    console.log('plus');
+    counter.value++;
 }
-function remove(): void {
-    console.log('remove');
+function minus(): void {
+    if (counter.value > 0) {
+        counter.value--;
+    }
 }
-
 </script>
+
+<style scoped lang="scss">
+@import "../assets/product-card.scss";
+</style>

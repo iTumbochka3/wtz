@@ -1,9 +1,21 @@
 <template>
-    <v-footer color="primary lighten-1" padless>
-        <v-row justify="center" no-gutters>
-            <v-col class="primary lighten-2 py-4 text-center white--text" cols="12">
-                {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
-            </v-col>
-        </v-row>
-    </v-footer>
+    <div class="custom-footer">
+        <div></div>
+        <v-pagination v-model="page" :length="6"></v-pagination>
+        <div class="cart-block">
+            <div>{{ sum }} руб.</div>
+            <v-icon small>
+                mdi-cart
+            </v-icon>
+        </div>
+    </div>
 </template>
+
+<script setup lang="ts">
+let page = ref(1);
+let sum = ref(0);
+</script>
+
+<style scoped lang="scss">
+@import "../assets/footer.scss";
+</style>
