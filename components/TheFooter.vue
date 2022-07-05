@@ -1,9 +1,9 @@
 <template>
     <div class="custom-footer">
         <div></div>
-        <v-pagination v-model="page" :length="6"></v-pagination>
+        <v-pagination v-model="store.page" :length="6"></v-pagination>
         <div class="cart-block">
-            <div>{{ sum }} руб.</div>
+            <div>{{ store.cartSum }} руб.</div>
             <v-icon small>
                 mdi-cart
             </v-icon>
@@ -12,8 +12,9 @@
 </template>
 
 <script setup lang="ts">
-let page = ref(1);
-let sum = ref(0);
+import { useProductStore } from '~~/stores/product';
+
+const store = useProductStore();
 </script>
 
 <style scoped lang="scss">

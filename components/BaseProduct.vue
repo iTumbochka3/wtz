@@ -11,8 +11,8 @@
         </v-card-text>
         <v-img :src="photoObject.urls.regular"></v-img>
         <v-card-actions>
-            <v-icon small @click="plus">mdi-plus</v-icon>
-            <v-icon small @click="minus">mdi-minus</v-icon>
+            <v-icon small @click="addProduct">mdi-plus</v-icon>
+            <v-icon small @click="removeProduct">mdi-minus</v-icon>
             <div class="product__counter">{{ counter }}</div>
             <v-spacer />
             <div class="product__price">{{ photoObject.price }} руб.</div>
@@ -22,7 +22,9 @@
 
 <script setup lang="ts">
 import { IProduct } from '~~/constants';
+import { useProductStore } from '~~/stores/product';
 
+const store = useProductStore();
 
 const props = defineProps({
     product: { type: Object },
@@ -31,14 +33,18 @@ const props = defineProps({
 let counter = ref(0);
 const photoObject = props.product as IProduct;
 
-function plus(): void {
+function addProduct(): void {
     counter.value++;
-}
-function minus(): void {
+    store.addToCart(photoObject.price);
+};
+
+function removeProduct(): void {
     if (counter.value > 0) {
         counter.value--;
+        store.removeFromCart(photoObject.price);
     }
-}
+};
+
 </script>
 
 <style scoped lang="scss">
