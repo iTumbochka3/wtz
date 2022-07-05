@@ -1,6 +1,6 @@
 <template>
     <div v-show="isShow" class="footer-block">
-        <div v-if="name !== 'xs'"></div>
+        <div></div>
         <v-pagination v-model="store.page" :length="store.maxPage" :total-visible="totalVisible"></v-pagination>
         <div class="cart-block">
             <div>{{ store.cartSum }} руб.</div>
