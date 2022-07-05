@@ -1,6 +1,9 @@
+@use "/assets/varibales";
+
 .product-card {
-    flex: 0 1 330px;
-    margin: 1ex;
+    @include card-width;
+    @include card-mx;
+    @include card-my;
 
     .v-card-text {
         display: flex;
@@ -16,7 +19,7 @@
 }
 
 .user-info {
-    margin-left: 1ex;
+    margin-left: $card-mx;
 }
 
 .user-info__name {
@@ -25,13 +28,12 @@
 }
 
 .user-info__tag {
-    color: gray;
     font-size: 14px;
     font-weight: 400;
 }
 
 .product__counter {
-    margin-left: 1ex;
+    margin-left: $card-mx;
     font-size: 16px;
     font-weight: 400;
 }

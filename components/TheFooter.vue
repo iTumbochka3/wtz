@@ -1,5 +1,5 @@
 <template>
-    <div class="custom-footer">
+    <div class="footer-block">
         <div></div>
         <v-pagination v-model="store.page" :length="6"></v-pagination>
         <div class="cart-block">
@@ -16,7 +16,3 @@ import { useProductStore } from '~~/stores/product';
 
 const store = useProductStore();
 </script>
-
-<style scoped lang="scss">
-@import "../assets/footer.scss";
-</style>

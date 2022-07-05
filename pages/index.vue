@@ -1,5 +1,5 @@
 <template>
-    <div class="galleryDiv">
+    <div class="gallery-block">
         <BaseProduct v-for="product in store.productList" :key="product.id" :product="product" />
     </div>
 </template>
@@ -18,7 +18,3 @@ watchEffect(() => {
 });
 
 </script>
-
-<style scoped lang="scss">
-@import "../assets/gallery.scss";
-</style>

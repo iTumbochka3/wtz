@@ -1,0 +1,17 @@
+$card-width: 330px;
+$card-mx: 1ex;
+$card-my: 1ex;
+
+@mixin card-width {
+    width: $card-width;
+}
+
+@mixin card-my {
+    margin-top: $card-my;
+    margin-bottom: $card-my;
+}
+
+@mixin card-mx {
+    margin-left: $card-mx;
+    margin-right: $card-mx;
+}

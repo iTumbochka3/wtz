@@ -1,7 +1,7 @@
 <template>
     <v-card class="product-card">
-        <v-card-text>
-            <v-avatar color="primary" size="48">
+        <v-card-text @click="showProfile">
+            <v-avatar size="48">
                 <img :src="photoObject.user.profile_image.medium" />
             </v-avatar>
             <div class="user-info">
@@ -25,6 +25,7 @@ import { IProduct } from '~~/constants';
 import { useProductStore } from '~~/stores/product';
 
 const store = useProductStore();
+const router = useRouter();
 
 const props = defineProps({
     product: { type: Object },
@@ -49,8 +50,9 @@ function removeProduct(): void {
     }
 };
 
-</script>
+function showProfile() {
+    let routeData = router.resolve({path: '/profile', query: {data: "someData"}});
+    window.open(routeData.href, '_blank');
+}
 
-<style scoped lang="scss">
-@import "../assets/product-card.scss";
-</style>
+</script>

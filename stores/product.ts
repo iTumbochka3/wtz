@@ -9,7 +9,7 @@ const unsplash = createApi({
 interface cartItem {
   price: number,
   count: number,
-}
+};
 
 export type RootState = {
   productList: IProduct[];
