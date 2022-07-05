@@ -1,11 +1,11 @@
 <template>
     <div class="galleryDiv">
-        <BaseProduct v-for="item in productList" :key="item.id" :product="item" />
+        <BaseProduct v-for="product in productList" :key="product.id" :product="product" />
     </div>
 </template>
 
 <script setup lang="ts">
-import { Product } from '@/constants';
+import { IProduct } from '@/constants';
 import { createApi } from 'unsplash-js';
 
 const unsplash = createApi({
@@ -14,21 +14,25 @@ const unsplash = createApi({
 
 let currentPage = ref(1);
 const perPage = 12;
-let productList: Product[] = reactive([]);
+let productList: IProduct[] = reactive([]);
 
 onMounted(() => {
     getPhotos();
 });
 
+function generatePrice(): number {
+    const minPrice = 1000;
+    const maxPrice = 60000;
+    return Math.floor(Math.random() * (maxPrice - minPrice + 1)) + minPrice;
+};
+
 async function getPhotos() {
     await unsplash.photos.list({ page: currentPage.value, perPage: perPage })
         .then((result) => {
             if (result.status === 200) {
-                console.log('response', result.response);
                 result.response.results.forEach((item) => {
-                    productList.push(new Product(item.id, item.urls.regular, item.user));
+                    productList.push({ ...item, price: generatePrice() });
                 })
-                console.log('productList', productList);
             }
         })
         .catch((error) => { console.log('error', error); });
