@@ -6,19 +6,20 @@ const unsplash = createApi({
   accessKey: '1kwxDz0xnLSCT3Chy0DMNIX__ucKl7BlVFiWDgEULZ0',
 });
 
-interface cartItem {
+interface ICartItem {
   price: number,
   count: number,
 };
 
 export type RootState = {
   productList: IProduct[];
-  cartList: Map<string, cartItem>,
+  cartList: Map<string, ICartItem>,
   cartSum: number,
   minPrice: number,
   maxPrice: number,
   page: number,
   perPage: number,
+  maxPage: number,
 };
 
 export const useProductStore = defineStore({
@@ -31,6 +32,7 @@ export const useProductStore = defineStore({
     maxPrice: 60000,
     page: 1,
     perPage: 12,
+    maxPage: 1,
   } as RootState),
 
   actions: {
@@ -38,14 +40,15 @@ export const useProductStore = defineStore({
       await unsplash.photos.list({ page: this.page, perPage: this.perPage })
         .then((result) => {
           if (result.status === 200) {
-            this.productList = result.response.results.map((item) => { return { ...item, price: this.generatePrice() }; });
+            this.maxPage = Math.ceil(result.response.total / this.perPage);
+            this.productList = result.response.results.map((item) => ({ ...item, price: this.generatePrice() }));
           }
         })
         .catch((error) => { console.log('error', error); });
     },
 
     async getUser(username: string) {
-      return await unsplash.users.get({ username: username});
+      return await unsplash.users.get({ username: username });
     },
 
     generatePrice(): number {

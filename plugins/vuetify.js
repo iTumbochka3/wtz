@@ -6,16 +6,16 @@ export default defineNuxtPlugin(nuxtApp => {
   const vuetify = createVuetify({
     components,
     directives,
-    // display: {
-    //   thresholds: {
-    //     xs: 320,
-    //     sm: 480,
-    //     md: 768,
-    //     lg: 1000,
-    //     xl: 1600,
-    //     xxl: 2040,
-    //   },
-    // }
+    display: {
+      thresholds: {
+        xs: 0,
+        sm: 320,
+        md: 480,
+        lg: 768,
+        xl: 1000,
+        xxl: 1600,
+      },
+    }
   })
 
   nuxtApp.vueApp.use(vuetify)

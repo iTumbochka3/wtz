@@ -1,5 +1,5 @@
 <template>
-    <v-card class="product-card">
+    <v-card class="product-card" :width="width">
         <v-card-text>
             <v-avatar size="48">
                 <img :src="photoObject.user.profile_image.medium" />
@@ -21,11 +21,13 @@
 </template>
 
 <script setup lang="ts">
+import { useDisplay } from 'vuetify/lib/framework.mjs';
 import { IProduct } from '~~/constants';
 import { useProductStore } from '~~/stores/product';
 
 const store = useProductStore();
 const router = useRouter();
+const { name } = useDisplay();
 
 const props = defineProps({
     product: { type: Object },
@@ -36,6 +38,17 @@ const photoObject = props.product as IProduct;
 
 onMounted(() => {
     counter.value = store.cartList.get(photoObject.id) ? store.cartList.get(photoObject.id).count : 0;
+});
+
+const width = computed(() => {
+    switch (name.value) {
+        case 'xs': return '100%'
+        case 'sm': return 440
+        case 'md': return 330
+        case 'lg': return 330
+        case 'xl': return 330
+        case 'xxl': return 330
+    }
 });
 
 function addProduct(): void {
@@ -51,7 +64,7 @@ function removeProduct(): void {
 };
 
 function showProfile(username: string) {
-    let routeData = router.resolve({path: '/profile', query: { username: username }});
+    const routeData = router.resolve({ path: '/profile', query: { username: username } });
     window.open(routeData.href, '_blank');
 }
 

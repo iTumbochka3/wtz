@@ -1,7 +1,6 @@
 @use "/assets/varibales";
 
 .product-card {
-    @include card-width;
     @include card-mx;
     @include card-my;
 
