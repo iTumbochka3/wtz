@@ -1,17 +1,19 @@
 <template>
     <div class="galleryDiv">
-        <BaseProduct v-for="product in productList" :key="product.id" :product="product" />
+        <BaseProduct v-for="product in store.productList" :key="product.id" :product="product" />
     </div>
 </template>
 
 <script setup lang="ts">
-import { IProduct } from '@/constants';
 import { useProductStore } from '~~/stores/product';
 
 const store = useProductStore();
-const productList: IProduct[] = store.productList;
 
-onMounted(() => {
+const state = reactive({
+    productList: reactive(store.productList),
+});
+
+watchEffect(() => {
     store.getProducts();
 });
 

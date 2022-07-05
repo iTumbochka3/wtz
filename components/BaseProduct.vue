@@ -33,15 +33,19 @@ const props = defineProps({
 let counter = ref(0);
 const photoObject = props.product as IProduct;
 
+onMounted(() => {
+    counter.value = store.cartList.get(photoObject.id) ? store.cartList.get(photoObject.id).count : 0;
+});
+
 function addProduct(): void {
     counter.value++;
-    store.addToCart(photoObject.price);
+    store.addToCart(photoObject.id, photoObject.price, counter.value);
 };
 
 function removeProduct(): void {
     if (counter.value > 0) {
         counter.value--;
-        store.removeFromCart(photoObject.price);
+        store.removeFromCart(photoObject.id, photoObject.price, counter.value);
     }
 };
 
