@@ -1,5 +1,10 @@
-$card-mx: 1ex;
-$card-my: 1ex;
+$card-mx: 4px;
+$card-my: 4px;
+$font-size-medium: 16px;
+$font-size-small: 14px;
+$font-weight-large: 800;
+$font-weight-medium: 600;
+$margin-bottom-for-desktop: 52px;
 
 @mixin card-my {
     margin-top: $card-my;

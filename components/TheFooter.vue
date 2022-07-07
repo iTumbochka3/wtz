@@ -2,11 +2,9 @@
     <div v-show="isShow" class="footer-block">
         <div></div>
         <v-pagination v-model="store.page" :length="store.maxPage" :total-visible="totalVisible"></v-pagination>
-        <div class="cart-block">
+        <div class="footer-block__cart">
             <div>{{ store.cartSum }} руб.</div>
-            <v-icon small>
-                mdi-cart
-            </v-icon>
+            <v-icon small>mdi-cart</v-icon>
         </div>
     </div>
 </template>

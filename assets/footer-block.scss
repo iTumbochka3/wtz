@@ -9,13 +9,14 @@
     background-color: black;
     color: white;
     opacity: 0.95;
-}
 
-.cart-block {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-right: 2ex;
+    &__cart {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-right: 24px;
+    }
 }

@@ -1,6 +1,6 @@
 <template>
-    <v-card class="product-card" :width="width">
-        <v-card-text>
+    <v-card class="product-card">
+        <v-card-text class="product-card__content">
             <v-avatar size="48">
                 <img :src="photoObject.user.profile_image.medium" />
             </v-avatar>
@@ -9,25 +9,24 @@
                 <div class="user-info__tag">{{ photoObject.user.instagram_username }}</div>
             </div>
         </v-card-text>
-        <v-img :src="photoObject.urls.regular"></v-img>
+        <v-img class="product-card__image" :src="photoObject.urls.regular" />
+        <v-spacer />
         <v-card-actions>
             <v-icon small @click="addProduct">mdi-plus</v-icon>
             <v-icon small @click="removeProduct">mdi-minus</v-icon>
-            <div class="product__counter">{{ counter }}</div>
+            <div class="product-card__counter">{{ counter }}</div>
             <v-spacer />
-            <div class="product__price">{{ photoObject.price }} руб.</div>
+            <div class="product-card__price">{{ photoObject.price }} руб.</div>
         </v-card-actions>
     </v-card>
 </template>
 
 <script setup lang="ts">
-import { useDisplay } from 'vuetify/lib/framework.mjs';
 import { IProduct } from '~~/constants';
 import { useProductStore } from '~~/stores/product';
 
 const store = useProductStore();
 const router = useRouter();
-const { name } = useDisplay();
 
 const props = defineProps({
     product: { type: Object },
@@ -38,17 +37,6 @@ const photoObject = props.product as IProduct;
 
 onMounted(() => {
     counter.value = store.cartList.get(photoObject.id) ? store.cartList.get(photoObject.id).count : 0;
-});
-
-const width = computed(() => {
-    switch (name.value) {
-        case 'xs': return '100%'
-        case 'sm': return 440
-        case 'md': return 330
-        case 'lg': return 330
-        case 'xl': return 330
-        case 'xxl': return 330
-    }
 });
 
 function addProduct(): void {
