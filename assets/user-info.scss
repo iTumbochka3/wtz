@@ -1,0 +1,15 @@
+@use "/assets/varibales";
+
+.user-info {
+    margin-left: $margin-default;
+
+    &__name {
+        font-size: $font-size-medium;
+        font-weight: $font-weight-large;
+    }
+
+    &__tag {
+        font-size: $font-size-small;
+        font-weight: $font-weight-medium;
+    }
+}

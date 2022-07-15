@@ -1,17 +1,25 @@
-$card-mx: 4px;
-$card-my: 4px;
-$font-size-medium: 16px;
+//Size
+$width-for-mobile: 100%;
+$width-for-tablet: 440px;
+$width-for-desktop: 330px;
+
+//Typography
 $font-size-small: 14px;
-$font-weight-large: 800;
+$font-size-medium: 16px;
+
 $font-weight-medium: 600;
+$font-weight-large: 800;
+
+//Space
+$margin-default: 4px;
 $margin-bottom-for-desktop: 52px;
 
 @mixin card-my {
-    margin-top: $card-my;
-    margin-bottom: $card-my;
+    margin-top: $margin-default;
+    margin-bottom: $margin-default;
 }
 
 @mixin card-mx {
-    margin-left: $card-mx;
-    margin-right: $card-mx;
+    margin-left: $margin-default;
+    margin-right: $margin-default;
 }

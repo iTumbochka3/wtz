@@ -7,17 +7,17 @@
     @include card-my;
 
     @media (min-width: 0) and (max-width: 320px) {
-        width: 100%;
+        width: $width-for-mobile;
         margin-left: 0;
         margin-right: 0;
     }
     @media (min-width: 321px) and (max-width: 480px) {
-        width: 440px;
+        width: $width-for-tablet;
         @include card-mx;
         
     }
     @media (min-width: 481px) {
-        width: 330px;
+        width: $width-for-desktop;
         @include card-mx;
     }
 
@@ -33,7 +33,7 @@
     }
 
     &__counter {
-        margin-left: $card-mx;
+        margin-left: $margin-default;
         font-size: $font-size-medium;
         font-weight: $font-weight-medium;
     }
@@ -41,19 +41,5 @@
     &__price {
         font-size: $font-size-medium;
         font-weight: $font-weight-large;
-    }
-}
-
-.user-info {
-    margin-left: $card-mx;
-
-    &__name {
-        font-size: $font-size-medium;
-        font-weight: $font-weight-large;
-    }
-
-    &__tag {
-        font-size: $font-size-small;
-        font-weight: $font-weight-medium;
     }
 }
