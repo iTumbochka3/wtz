@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.1.9",
-    "mdi": "^2.2.43",
+    "@mdi/font": "^2.2.43",
     "pinia": "^2.0.14",
     "sass": "^1.53.0",
     "unsplash-js": "^7.0.15",
